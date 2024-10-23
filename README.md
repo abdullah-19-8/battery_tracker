@@ -17,8 +17,6 @@ This Flutter application tracks the device's battery level and charging status u
   <img src="https://github.com/user-attachments/assets/a7dc29cd-5e04-4687-a46e-1914e4914aa1" alt="Screenshot 2" width="300"/>
 </p>
 
-
-
 ## Requirements
 
 - **Flutter**: Ensure you have Flutter installed. You can get Flutter from [here](https://flutter.dev).
@@ -47,29 +45,31 @@ This Flutter application tracks the device's battery level and charging status u
    ```
 
 4. For iOS:
-   
-  - Connect a real iOS device.
-  - Open the project in Xcode by navigating to ios/Runner.xcworkspace.
-  - Change the bundle identifier if necessary.
-  - Run the app from Xcode or the terminal:
-    
+
+- Connect a real iOS device.
+- Open the project in Xcode by navigating to ios/Runner.xcworkspace.
+- Change the bundle identifier if necessary.
+- Run the app from Xcode or the terminal:
+
    ```bash
    flutter run
    ```
 
 ## Method Channel Implementation
-The battery level and charging status are retrieved via native platform calls using Method Channels. 
+
+The battery level and charging status are retrieved via native platform calls using Method Channels.
 The implementation is structured as follows:
 
-  - Android: Kotlin code interacts with the Android battery APIs.
-  - iOS: Swift code retrieves battery information from the iOS device.
-
+- Android: Kotlin code interacts with the Android battery APIs.
+- iOS: Swift code retrieves battery information from the iOS device.
 
 ## Error Handling
-  - Proper error messages are displayed in the UI if there's any issue retrieving battery info or charging status.
+
+- Proper error messages are displayed in the UI if there's any issue retrieving battery info or charging status.
 
 ## State Management
-  - The app uses Riverpod for managing the state and handling the logic for refreshing battery data.
+
+- The app uses Riverpod for managing the state and handling the logic for refreshing battery data.
 
 ## Architecture
 
@@ -81,7 +81,5 @@ The app follows a clean architecture approach with three main layers:
 
 ## Future Improvements
 
-  - Add more animations and improve UI design.
-  - Add unit and widget tests for better test coverage.
-
-
+- Add more animations and improve UI design.
+- Add unit and widget tests for better test coverage.

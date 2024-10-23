@@ -40,7 +40,8 @@ class _BatteryPageState extends ConsumerState<BatteryPage>
 
     // Trigger animation when battery info is updated
     if (batteryState.batteryLevel != 'Unknown') {
-      _controller.forward();
+      _controller.reset(); // Reset the animation controller
+      _controller.forward(); // Then play the animation
     }
 
     return Scaffold(
