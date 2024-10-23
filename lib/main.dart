@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,10 +29,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final String _batteryLevel = 'Unknown';
-  final String _chargingStatus = 'Unknown';
+  String _batteryLevel = 'Unknown';
+  String _chargingStatus = 'Unknown';
 
-  Future<void> _refreshBatteryInfo() async {}
+  static const platform = MethodChannel('battery');
+
+  Future<void> _refreshBatteryInfo() async {
+    try {
+      final int batteryLevel = await platform.invokeMethod('getBatteryLevel');
+      final String chargingStatus =
+          await platform.invokeMethod('getChargingStatus');
+      setState(() {
+        _batteryLevel = '$batteryLevel%';
+        _chargingStatus = chargingStatus;
+      });
+    } catch (e) {
+      setState(() {
+        _batteryLevel = 'Failed to get battery level';
+        _chargingStatus = 'Failed to get charging status';
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
